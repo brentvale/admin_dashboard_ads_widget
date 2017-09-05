@@ -2,23 +2,49 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+#imageIndexBackground{
+	background-image: url('./images/Images_Section_for_web_1500x523.jpg');
+	background-size: 100%;
+	height: 349px; /*2/3 original*/
+	position: relative;
+	width: 1000px; /*2/3 original*/
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+#imageIndexBackground div{
+	height: 120px;  
+	left: 188px;    
+	margin: 6px;		
+	position: absolute;
+	text-align:left;
+	top: 110px;     
+	width: 485px; 
+	overflow: auto;
+	white-space:nowrap;
 }
-
-.App-intro {
-  font-size: large;
+ul{
+	display:inline-block;
+	height: 120px;
+	margin:0;
+	padding: 0;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+ul li{
+	display:inline-block;
+	height: 100px;
+	list-style-type: none;
+	margin: 10px;
+	width:191px;
+}
+ul li:hover{
+	cursor:pointer;
+}
+.first{
+	background-image: url('./images/hotel_tonight_ad_v2.png');
+	background-size: 100%;
+}
+.second{
+	background-image: url('./images/slack_ad_v2.png');
+	background-size: 100%;
+}
+.third{
+	background-image: url('./images/stripe_ad_v2.png');
+	background-size: 100%;
 }
