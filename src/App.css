@@ -1,7 +1,9 @@
 .App {
   text-align: center;
 }
-
+canvas:hover{
+	cursor: url('./images/color_picker_tool_25x25.png'), pointer;
+}
 #imageIndexBackground{
 	background-image: url('./images/Images_Section_for_web_1500x523.jpg');
 	background-size: 100%;
@@ -27,6 +29,7 @@ ul{
 	padding: 0;
 }
 ul li{
+	background-size: 100%;
 	display:inline-block;
 	height: 100px;
 	list-style-type: none;
@@ -36,15 +39,10 @@ ul li{
 ul li:hover{
 	cursor:pointer;
 }
-.first{
-	background-image: url('./images/hotel_tonight_ad_v2.png');
-	background-size: 100%;
+ul.steps {
+	width: 200px;
 }
-.second{
-	background-image: url('./images/slack_ad_v2.png');
-	background-size: 100%;
-}
-.third{
-	background-image: url('./images/stripe_ad_v2.png');
-	background-size: 100%;
+ul.steps li{
+	height: auto;
+	width: auto;
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import {expect} from 'chai';
-import {shallow} from 'enzyne';
+import {shallow} from 'enzyme';
 
 import App from './App';
 
 it('renders without crashing', () => {
-  shallow(<App />)
+  shallow(<App />);
 });
