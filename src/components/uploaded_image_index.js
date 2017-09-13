@@ -33,7 +33,8 @@ export default class UploadedImageIndex extends Component{
 	}
 	
 	close() {
-    this.setState({ showModal: false });
+		//if user closes modal, also reset coordsSet
+    this.setState({ showModal: false, coordsSet: null });
   }
 	
 	createPixelSet(startX, startY){
