@@ -110,10 +110,14 @@ export default class UploadedImageIndex extends Component{
 	}
 	
 	handleAreaSelected(e){
-		alert("selected");
-		let x = e.evt.layerX*2;
-		let y = e.evt.layerY*2;
-		
+		let x, y;
+		if(typeof e.evt.targetTouches !== "undefined"){
+			x = e.evt.targetTouches[0].pageX;
+			y = e.evt.targetTouches[0].pageY;
+		} else {
+			x = e.evt.layerX*2;
+			y = e.evt.layerY*2;
+		}
 		let obj = this.createPixelSet(x, y);
 		this.setState({coordsSet: obj.coordsSet, hex: obj.hex});
 	}
@@ -169,7 +173,8 @@ export default class UploadedImageIndex extends Component{
 																																height={FACEBOOK_AD_HEIGHT} 
 																																width={FACEBOOK_AD_WIDTH} 
 																																onMouseMove={this.handleMouseMove}
-																																onClick={this.handleAreaSelected}/>
+																																onClick={this.handleAreaSelected}
+																																onTouchStart={this.handleAreaSelected}/>
 										        </ReactKonva.Layer>
 													</ReactKonva.Stage>;
 		let coordsDisplay = [];

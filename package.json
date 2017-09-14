@@ -23,6 +23,7 @@
     "react-konva": "^1.1.4",
     "react-scripts": "1.0.10",
     "react-slick": "^0.15.0",
+    "react-tappable": "^1.0.2",
     "react-test-renderer": "^15.6.1",
     "sinon": "^2.3.7"
   },

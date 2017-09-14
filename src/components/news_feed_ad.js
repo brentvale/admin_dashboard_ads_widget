@@ -52,9 +52,17 @@ export default class NewsFeedAd extends Component{
 	}
 	
 	handleMouseMove(e){
-		let x = e.pageX;
-		//e.currentTarget.offsetTop is temp fix until news feed display is assembled
-		let y = e.pageY - e.currentTarget.offsetTop;
+		let x, y;
+		
+		if(typeof e.targetTouches !== "undefined"){
+			x = e.targetTouches[0].pageX;
+			y = e.targetTouches[0].pageY;
+		} else {
+			x = e.pageX;
+			//e.currentTarget.offsetTop is temp fix until news feed display is assembled
+			y = e.pageY - e.currentTarget.offsetTop;
+		}
+		
 		let newStartCoords = Object.assign({}, this.state.startCoords);
 		let newFilledCoords = this.state.filledInCoords.slice(0);
 		//find all nodes within 50px of these two
@@ -104,7 +112,8 @@ export default class NewsFeedAd extends Component{
 		
 		return(
 			<div style={{height: '314px', width: '600px', position: 'relative', backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: "cover"}} 
-					 onMouseMove={this.handleMouseMove}>
+					 onMouseMove={this.handleMouseMove}
+					 onTouchMove={this.handleMouseMove}>
 				{coordsDisplay.map((coords) => {
 					return coords
 				})}
