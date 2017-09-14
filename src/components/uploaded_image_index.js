@@ -110,6 +110,7 @@ export default class UploadedImageIndex extends Component{
 	}
 	
 	handleAreaSelected(e){
+		alert("selected");
 		let x = e.evt.layerX*2;
 		let y = e.evt.layerY*2;
 		
