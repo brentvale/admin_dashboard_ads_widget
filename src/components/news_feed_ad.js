@@ -83,7 +83,6 @@ export default class NewsFeedAd extends Component{
 		if(Object.keys(newStartCoords).length === 1){
 			playAnimation = true;
 			animationCount += 1;
-			console.log("made it here");
 		}
 		this.setState({	filledInCoords: newFilledCoords, 
 										startCoords: newStartCoords, 
