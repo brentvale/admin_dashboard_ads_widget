@@ -36,7 +36,7 @@ export default class UploadedImageIndex extends Component{
 	}
 	
 	close() {
-		//if user closes modal, also reset coordsSet
+		//if user closes modal, also reset coordsSet so next selection area starts blank
     this.setState({ showModal: false, coordsSet: null, currentAdTitle: "" });
   }
 	
@@ -70,7 +70,8 @@ export default class UploadedImageIndex extends Component{
 				} 
 			}
 		}
-		//for debugging and determining size of object ~
+		//for debugging and determining size of object 
+		//consider compression of data before saving (for each row (Y values) add the array of X values that go with)
 		// let size = this.roughSizeOfObject(coordsSet);
 		return {coordsSet: coordsSet, hex: hex};
 	}
@@ -165,7 +166,6 @@ export default class UploadedImageIndex extends Component{
 	}
 	
 	render(){
-		const {savedAds} = this.props;
 		const imagePreview =	(this.state.adImage == null) ? "" :
 													<ReactKonva.Stage height={FACEBOOK_AD_HEIGHT} width={FACEBOOK_AD_WIDTH} >
 														<ReactKonva.Layer style={{textAlign:"center"}}>
@@ -223,7 +223,6 @@ export default class UploadedImageIndex extends Component{
 									<li>1. Select interactive area.</li>
 									<li>2. Save the interactive area configuration.</li>
 								</ul>
-							
 						</div>
           </Modal.Body>
           <Modal.Footer>

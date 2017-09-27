@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+	padding: 10px;
+  text-align: left;
 }
 canvas:hover{
 	cursor: url('./images/color_picker_tool_25x25.png'), pointer;
@@ -45,4 +46,19 @@ ul.steps {
 ul.steps li{
 	height: auto;
 	width: auto;
+}
+.image-animation{
+	position: absolute;
+	left: 40%;
+	top: 30%;
+	animation:thumbs-up-zoom 2s forwards;
+}
+
+@keyframes thumbs-up-zoom {
+	from{
+		visibility:visible;
+	}
+	to{
+		visibility:hidden;
+	}
 }

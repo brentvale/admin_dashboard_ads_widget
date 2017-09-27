@@ -15,7 +15,9 @@ export default class NewsFeedAd extends Component{
 			startCoords: props.coords,
 			filledInCoords: [],
 			hex: props.coords.hex,
-			yOffset: null
+			yOffset: null,
+			animationCount: 0,
+			playAnimation: false
 		};
 		this.backgroundImageFromProps = this.backgroundImageFromProps.bind(this);
 		this.dotDisplay = this.dotDisplay.bind(this);
@@ -75,7 +77,18 @@ export default class NewsFeedAd extends Component{
 				} 
 			}
 		}
-		this.setState({filledInCoords: newFilledCoords, startCoords: newStartCoords});
+		//when 'hex' is the only remaining key => length = 1
+		let playAnimation = false,
+				animationCount = this.state.animationCount;
+		if(Object.keys(newStartCoords).length === 1){
+			playAnimation = true;
+			animationCount += 1;
+			console.log("made it here");
+		}
+		this.setState({	filledInCoords: newFilledCoords, 
+										startCoords: newStartCoords, 
+										playAnimation: playAnimation, 
+										animationCount: animationCount});
 	}
 	
 	withinRange(options){
@@ -88,9 +101,8 @@ export default class NewsFeedAd extends Component{
 	}
 	
 	render(){
-		const {title, coords} = this.props;
 		let idx = 0;
-		let coordsDisplay = []
+		let coordsDisplay = [];
 		let backgroundImageUrl = this.backgroundImageFromProps();
 		
 		for(let i in this.state.startCoords){
@@ -110,13 +122,22 @@ export default class NewsFeedAd extends Component{
 			idx+=1;
 		}
 		
+		let animation;
+		if(this.state.playAnimation && this.state.animationCount === 1){
+			animation = <img className="image-animation" src="https://image.ibb.co/efRS4Q/facebook_thumbs_up_animation_white_back.png" alt="Thumbs up"/>
+		} else {
+			animation = "";
+		}
+		
+		let mouseMoveCallback = (this.state.playAnimation && this.state.animationCount > 0) ? function(){console.log("done tracing")} : this.handleMouseMove;
+		
 		return(
 			<div style={{height: '314px', width: '600px', position: 'relative', backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: "cover"}} 
-					 onMouseMove={this.handleMouseMove}
-					 onTouchMove={this.handleMouseMove}>
+					 onMouseMove={mouseMoveCallback}>
 				{coordsDisplay.map((coords) => {
 					return coords
 				})}
+				{animation}
 			</div>
 		)
 	}

@@ -26,11 +26,22 @@ export default class App extends Component {
 	}
 	
   render() {
-		const view = (this.state.adminView) ? <AdUploadContainer handleSaveArea={this.handleSaveArea} savedAds={this.state.savedAds}/>
-																				: <NewsFeedSample savedAds={this.state.savedAds}/>;
+		let view, toggleButton, adminInstruction;
+		
+		if(this.state.adminView){
+			view = <AdUploadContainer handleSaveArea={this.handleSaveArea} savedAds={this.state.savedAds}/>;
+			toggleButton = <Button onClick={this.toggleView}>View Interactive Ads</Button>;
+			adminInstruction = <p>Click on one of the ads below to set the traceable area.</p>;
+		} else {
+			view = <NewsFeedSample savedAds={this.state.savedAds}/>;
+			toggleButton = <Button onClick={this.toggleView}>Return To Admin View</Button>;
+			adminInstruction = "";
+		}
+
     return (
       <div className="App">
-				<Button onClick={this.toggleView}>VIEW ADS IN FEED</Button>
+				{toggleButton}
+				{adminInstruction}
 				{view}
       </div>
     );
